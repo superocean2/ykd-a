@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace DestinetWebView
 {
-    [Activity(Label = "TubeKid.net", MainLauncher = false, Theme = "@style/AppTheme.NoActionBar", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
+    [Activity(Label = "TubeKid.net", MainLauncher = false, Theme = "@style/AppTheme.NoActionBar", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class NoInternetActivity : Activity
     {
         string url = IndigoConfig.WEB_URL;

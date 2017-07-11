@@ -18,7 +18,7 @@ using Java.Interop;
 
 namespace DestinetWebView
 {
-    [Activity(Label = "TubeKid.net", MainLauncher = true,Icon = "@mipmap/ic_launcher", Theme = "@style/AppTheme.NoActionBar", ConfigurationChanges = Android.Content.PM.ConfigChanges.KeyboardHidden | Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
+    [Activity(Label = "TubeKid.net", MainLauncher = true,Icon = "@drawable/ic_launcher", Theme = "@style/AppTheme.NoActionBar", ConfigurationChanges = Android.Content.PM.ConfigChanges.KeyboardHidden | Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
     public class WebViewActivity : Activity
     {
         FrameLayout webViewPlaceHolder;

@@ -3,5 +3,5 @@
 	<uses-sdk android:minSdkVersion="19" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<application android:label="TubeKid.net" android:icon="@mipmap/ic_launcher"></application>
+	<application android:label="TubeKid.net" android:icon="@drawable/ic_launcher"></application>
 </manifest>
