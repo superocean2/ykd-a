@@ -23,15 +23,23 @@ namespace DestinetWebView
         public override void OnPageStarted(Android.Webkit.WebView view, string url, Bitmap favicon)
         {
             base.OnPageStarted(view, url, favicon);
-            WebViewPlaceHolder.Visibility = ViewStates.Gone;
-            LoadingImage.Visibility = ViewStates.Visible;
+            if (DroidUtility.IsConnectingToInternet(Context))
+            {
+                WebViewPlaceHolder.Visibility = ViewStates.Gone;
+                LoadingImage.Visibility = ViewStates.Visible;
+            }
+            else
+            {
+                Intent intent = new Intent(Context,typeof(NoInternetActivity));
+                intent.PutExtra("url", url);
+                Context.StartActivity(intent);
+            }
         }
         public override void OnPageFinished(Android.Webkit.WebView view, string url)
         {
             base.OnPageFinished(view, url);
             LoadingImage.Visibility = ViewStates.Gone;
             WebViewPlaceHolder.Visibility = ViewStates.Visible;
-            view.LoadUrl("javascript:document.getElementsByTagName('video')[0].play()");
         }
         //public override bool ShouldOverrideUrlLoading(Android.Webkit.WebView view, string url)
         //{

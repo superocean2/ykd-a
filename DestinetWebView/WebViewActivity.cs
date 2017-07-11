@@ -14,10 +14,11 @@ using Android.Content.Res;
 using Android.Provider;
 using Android.Net;
 using System.Threading;
+using Java.Interop;
 
 namespace DestinetWebView
 {
-    [Activity(Label = "TubeKid.net", MainLauncher = true, Theme = "@style/AppTheme.NoActionBar", ConfigurationChanges = Android.Content.PM.ConfigChanges.KeyboardHidden | Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
+    [Activity(Label = "TubeKid.net", MainLauncher = true,Icon = "@mipmap/ic_launcher", Theme = "@style/AppTheme.NoActionBar", ConfigurationChanges = Android.Content.PM.ConfigChanges.KeyboardHidden | Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
     public class WebViewActivity : Activity
     {
         FrameLayout webViewPlaceHolder;
@@ -35,15 +36,9 @@ namespace DestinetWebView
             }
             webViewPlaceHolder = (FrameLayout)FindViewById(Resource.Id.webViewPlaceholder);
             imageLoading = (ProgressBar)FindViewById(Resource.Id.loading);
+            imageLoading.Visibility = ViewStates.Gone;
             webViewClient = new WebViewClientIndigo() { Context = this, LoadingImage = imageLoading, WebViewPlaceHolder = webViewPlaceHolder };
-            if (DroidUtility.IsConnectingToInternet(this))
-               InitializeUI();
-            else
-            {
-                Toast.MakeText(this,Resource.String.InformInternet, ToastLength.Long).Show();
-                Thread.Sleep(3000);
-                Finish();
-            }
+            InitializeUI();
         }
         protected override void OnResume()
         {
@@ -72,11 +67,6 @@ namespace DestinetWebView
                 webView.ScrollbarFadingEnabled = true;
                 webView.Settings.JavaScriptEnabled = true;
                 webView.SetWebViewClient(webViewClient);
-                webView.SetWebChromeClient(new WebChromeClient());
-                if (Build.VERSION.SdkInt > BuildVersionCodes.Kitkat)
-                {
-                    webView.Settings.MediaPlaybackRequiresUserGesture = false;
-                }
                 // Load a page
                 webView.LoadUrl(url);
                 //add webview to placeholder
