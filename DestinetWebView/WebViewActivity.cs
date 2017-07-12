@@ -67,6 +67,7 @@ namespace DestinetWebView
                 webView.ScrollbarFadingEnabled = true;
                 webView.Settings.JavaScriptEnabled = true;
                 webView.SetWebViewClient(webViewClient);
+                webView.SetWebChromeClient(new WebChromeClient());
                 // Load a page
                 webView.LoadUrl(url);
                 //add webview to placeholder
